@@ -41,58 +41,69 @@ void GameController::shutdown()
 
 void GameController::update(float deltaTime)
 {
+	// Game Time
 	m_timer += deltaTime;
+
+	// INPUT for Ship movement
+	aie::Input* input = aie::Input::getInstance();
+
+	if (input->wasKeyPressed(aie::INPUT_KEY_SPACE))
+	{
+		// Shoot
+	}
+
+	if (input->wasKeyPressed(aie::INPUT_KEY_A))
+	{
+		// Rotate CounterClockwise
+	}
+
+	if (input->wasKeyPressed(aie::INPUT_KEY_D))
+	{
+		// Rotate Clockwise
+	}
 
 	// SPAWN GENERATOR: Asteroids
 	for (int i = 0; i < iAsteroidNumber; ++i)
 	{
 
-		aie::Input* input = aie::Input::getInstance();
 
-		if (input->wasKeyPressed(aie::INPUT_KEY_SPACE))
-		{
-			// Shoot
-		}
-
-		if (input->wasKeyPressed(aie::INPUT_KEY_A))
-		{
-			// Rotate CounterClockwise
-		}
-
-		if (input->wasKeyPressed(aie::INPUT_KEY_D))
-		{
-			// Rotate Clockwise
-		}
-
-
+		// ASTEROID: Collision detection
 		/*
 		int m_asteroid[i]; // temp until class is made.
 		int m_ship;		   // temp until class is made.
 
-		//	Generates Asteroid Numbers
-		for ((m_asteroid[i]->Position() - m_ship->Position()).glm::length() < 20)
+
+		glm::vec3 distanceVector(20,0,0)
+		float length = glm::length(distanceVector);
+
+		for ((m_asteroid[i]->Position() - m_ship->Position()).length < 20)
 		{
+			m_asteroid[i]->update(deltaTime); // Updates position of asteroids.
+
+
+			//RE: if(length < 20) {//Do Stuff}
 			// Calculates the position of the asteroid if it enters, remove health /detroy ship.
 		}
 		*/
 
+		// BULLET: Collision detection
 
 		/*
 		for ((m_bullet[e]->Position() - m_asteroid[i]->Position()).gml::length() < 20)
 		{
 			if (m_asteroid[i] == 1) // Large Asteroid
 			{
-				// Destroy large asteroid, spawn 2 medium asteroids and add points.
+				// Destroy large asteroid, spawn 2 medium asteroids and add points. Delete bullet.
 			}
 
 			if (m_asteroid[i] == 2) // Medium Asteroid
 			{
-				// Destroy medium asteroid, spawn 1 small asteroid and add points.
+				// Destroy medium asteroid, spawn 1 small asteroid and add points. Delete bullet
 			}
 
 			else
 			{
-				// Destroy Asteroid and add points.
+				// Destroy Asteroid and add points. Delete bullet
 			}
 		}
 		*/

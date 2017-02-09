@@ -36,8 +36,8 @@ public:
 	virtual bool startup() override;  // Use this to load textures
 	virtual void shutdown() override; // Use this to delete textures
 	/*
-	Startup is an easier way to preload assets in for them to be used later
-	in other classfiles rather than loading them in the constructor which might
+	Startup is an easier way to preload assets into the game, to be referenced later
+	in other classes. rather than loading them in the constructor which might
 	break the application / leak memory.
 
 	Shutdown will be used similiar but this will replace the deconstructor.
