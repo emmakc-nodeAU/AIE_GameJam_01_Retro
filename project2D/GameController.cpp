@@ -41,26 +41,26 @@ void GameController::shutdown()
 
 void GameController::update(float deltaTime)
 {
-	// Game Time
-	m_timer += deltaTime;
+	//// Game Time
+	//m_timer += deltaTime;
 
-	// INPUT for Ship movement
-	aie::Input* input = aie::Input::getInstance();
+	//// INPUT for Ship movement
+	//aie::Input* input = aie::Input::getInstance();
 
-	if (input->wasKeyPressed(aie::INPUT_KEY_SPACE))
-	{
-		// Shoot
-	}
+	//if (input->wasKeyPressed(aie::INPUT_KEY_SPACE))
+	//{
+	//	// Shoot
+	//}
 
-	if (input->wasKeyPressed(aie::INPUT_KEY_A))
-	{
-		// Rotate CounterClockwise
-	}
+	//if (input->wasKeyPressed(aie::INPUT_KEY_A))
+	//{
+	//	// Rotate CounterClockwise
+	//}
 
-	if (input->wasKeyPressed(aie::INPUT_KEY_D))
-	{
-		// Rotate Clockwise
-	}
+	//if (input->wasKeyPressed(aie::INPUT_KEY_D))
+	//{
+	//	// Rotate Clockwise
+	//}
 
 	// SPAWN GENERATOR: Asteroids
 	for (int i = 0; i < iAsteroidNumber; ++i)
