@@ -3,11 +3,11 @@
 #include <glm/glm.hpp>
 #include "BaseObject.h"
 
-class Ship : public BaseObject
+class Bullet : public BaseObject
 {
 public:
-	Ship();
-	~Ship();
+	Bullet();
+	~Bullet();
 
 	// FUNCTIONS
 	// 1. Update

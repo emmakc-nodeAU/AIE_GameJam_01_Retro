@@ -3,6 +3,7 @@
 #include "Input.h"
 #include "Texture.h"
 #include "Ship.h"
+#include "Bullet.h"
 
 
 // Foward Declaring
@@ -26,8 +27,14 @@ bool GameController::startup()
 
 
 	m_ship = new Ship();
+
+	m_bullet = new Bullet();
+	m_bullet->setPosition(40, 40);
 	m_ship->setPosition(500, 500);
-	m_texture =	new aie::Texture("./textures/ship_01.png");
+	// Texture: Ship
+	m_textureShip =	new aie::Texture("./textures/ship_01.png");
+	// Texture: Bullet
+	m_textureBullet = new aie::Texture("./textures/bullet.png");
 
 	//m_font =		new aie::Font("./font/consolas.ttf", 32);
 
@@ -40,7 +47,9 @@ void GameController::shutdown()
 {
 	//delete m_audio;
 	//delete m_font;
-	delete m_texture;
+	delete m_textureShip;
+	delete m_textureBullet;
+	delete m_bullet;
 	delete m_ship;
 	delete m_2dRender;
 
@@ -130,6 +139,7 @@ void GameController::draw()
 	clearScreen();
 
 	m_2dRender->begin();
-	m_2dRender->drawSprite(m_texture,m_ship->getX(),m_ship->getY(),64.0f,64.0f, m_ship->getRotation());
+	m_2dRender->drawSprite(m_textureShip,m_ship->getX(),m_ship->getY(),64.0f,64.0f, m_ship->getRotation());
+	m_2dRender->drawSprite(m_textureBullet, m_bullet->getX(), m_bullet->getY(), 64.0f, 64.0f, 0);
 	m_2dRender->end();
 }

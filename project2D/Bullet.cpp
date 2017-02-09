@@ -1,21 +1,21 @@
-#include "ship.h"
+#include "Bullet.h"
 #include <Input.h>
 #include <glm/ext.hpp>
 #include <glm/glm.hpp>
 
 
-Ship::Ship(): BaseObject(0.0f,0.0f)
+Bullet::Bullet() : BaseObject(0.0f, 0.0f)
 {
-	fSpeed = 3.1516;
+	fSpeed = 500;
 }
 
-Ship::~Ship()
+Bullet::~Bullet()
 {
 }
 
-void Ship::update(float deltaTime)
+void Bullet::update(float deltaTime)
 {
-	// INPUT for Ship movement
+	// MOVEMENT (Bullet Movement)
 	aie::Input* input = aie::Input::getInstance();
 
 	//glm::vec3 rotationPos;
@@ -29,19 +29,18 @@ void Ship::update(float deltaTime)
 	if (input->isKeyDown(aie::INPUT_KEY_A))
 	{
 		// Rotate Counter Clockwise
-		m_fRotation += fSpeed * deltaTime;
+		m_fRotation = fSpeed * deltaTime;
 	}
 
 	if (input->isKeyDown(aie::INPUT_KEY_D))
 	{
 		// Rotate Clockwise
-		m_fRotation -= fSpeed * deltaTime;
+		m_fRotation = -fSpeed * deltaTime;
 	}
-
 
 }
 
-void Ship::shoot(float x, float y)
+void Bullet::shoot(float x, float y)
 {
 
 }

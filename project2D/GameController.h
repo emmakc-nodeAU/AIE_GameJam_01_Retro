@@ -13,6 +13,7 @@
 //	class Texture;
 //}
 class Ship;
+class Bullet;
 
 class GameController : public aie::Application
 {
@@ -48,7 +49,8 @@ public:
 protected:
 
 	aie::Renderer2D*	m_2dRender;      // Renders the gameObject.
-	aie::Texture*		m_texture;       // Gets the allocated texture.
+	aie::Texture*		m_textureShip;   // Gets the allocated texture.
+	aie::Texture*		m_textureBullet; // Gets the allocated texture.
 	aie::Font*			m_font;          // Loads the font.
 	aie::Audio*			m_audio;         // Imports Audio.
 
@@ -56,4 +58,6 @@ protected:
 
 	// Ship
 	Ship* m_ship;
+	// Bullet
+	Bullet* m_bullet;
 };
