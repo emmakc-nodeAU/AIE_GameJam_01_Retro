@@ -90,11 +90,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Application2D.cpp" />
+    <ClCompile Include="BaseObject.cpp" />
     <ClCompile Include="GameController.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application2D.h" />
+    <ClInclude Include="BaseObject.h" />
     <ClInclude Include="GameController.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
