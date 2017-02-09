@@ -2,6 +2,8 @@
 #include <glm/ext.hpp>
 #include <glm/glm.hpp>
 #include "BaseObject.h"
+#include "Bullet.h"
+
 
 class Ship : public BaseObject
 {
