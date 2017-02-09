@@ -2,6 +2,7 @@
 #include "Application2D.h"
 #include "Input.h"
 #include "Texture.h"
+#include "Ship.h"
 
 
 // Foward Declaring
@@ -21,28 +22,37 @@ GameController::~GameController()
 
 bool GameController::startup()
 {
-	//m_2dRender =	new aie::Renderer2D();
+	m_2dRender =	new aie::Renderer2D();
 
-	//m_texture =	new aie::Texture("./textures/numbered_grid.tga");
+
+	m_ship = new Ship();
+	m_ship->setPosition(500, 500);
+	m_texture =	new aie::Texture("./textures/ship_01.png");
 
 	//m_font =		new aie::Font("./font/consolas.ttf", 32);
 
 	//m_audio =		new aie::Audio("./audio/powerup.wav");
+
+	return true;
 }
 
 void GameController::shutdown()
 {
-	delete m_audio;
-	delete m_font;
+	//delete m_audio;
+	//delete m_font;
 	delete m_texture;
+	delete m_ship;
 	delete m_2dRender;
+
 }
 
 
 void GameController::update(float deltaTime)
 {
 	//// Game Time
-	//m_timer += deltaTime;
+	m_timer += deltaTime;
+
+	m_ship->update(deltaTime);
 
 	//// INPUT for Ship movement
 	//aie::Input* input = aie::Input::getInstance();
@@ -120,4 +130,6 @@ void GameController::draw()
 	clearScreen();
 
 	m_2dRender->begin();
+	m_2dRender->drawSprite(m_texture,m_ship->getX(),m_ship->getY(),64.0f,64.0f, m_ship->getRotation());
+	m_2dRender->end();
 }

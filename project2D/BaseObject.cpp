@@ -10,6 +10,7 @@ BaseObject::BaseObject(float a_floatX, float a_floatY)
 	m_fY = a_floatY;
 	m_fmovementX = 0;
 	m_fmovementY = 0;
+	m_fRotation = 0;
 }
 
 BaseObject::~BaseObject()
@@ -23,25 +24,4 @@ void BaseObject::update(float deltaTime)
 	m_fX += m_fmovementX;
 	m_fY += m_fmovementY;
 
-	// Game Time
-	m_timer += deltaTime;
-
-	// INPUT for Ship movement
-	aie::Input* input = aie::Input::getInstance();
-
-	if (input->wasKeyPressed(aie::INPUT_KEY_A))
-	{
-		// Rotate CounterClockwise
-	}
-
-	if (input->wasKeyPressed(aie::INPUT_KEY_D))
-	{
-		// Rotate Clockwise
-	}
-
-	// BULLET MOVEMENT
-	if (input->wasKeyPressed(aie::INPUT_KEY_SPACE))
-	{
-		// Shoot
-	}
 }

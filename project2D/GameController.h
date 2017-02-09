@@ -12,6 +12,7 @@
 //// Forward Declaring
 //	class Texture;
 //}
+class Ship;
 
 class GameController : public aie::Application
 {
@@ -53,5 +54,6 @@ protected:
 
 	float m_timer;
 
-
+	// Ship
+	Ship* m_ship;
 };

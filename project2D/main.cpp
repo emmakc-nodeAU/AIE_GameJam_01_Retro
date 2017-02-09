@@ -1,8 +1,8 @@
-#include "Application2D.h"
+#include "GameController.h"
 
 int main() {
 	
-	auto app = new Application2D();
+	auto app = new GameController();
 	app->run("AIE", 1280, 720, false);
 	delete app;
 
