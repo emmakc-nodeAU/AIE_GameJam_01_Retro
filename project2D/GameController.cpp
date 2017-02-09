@@ -4,6 +4,7 @@
 #include "Texture.h"
 #include "Ship.h"
 #include "Bullet.h"
+#include "Asteroid.h"
 
 
 // Foward Declaring
@@ -55,6 +56,27 @@ void GameController::shutdown()
 
 }
 
+Asteroid * GameController::createAsteroid(float X, float Y, float size)
+{
+	// Create A.
+	Asteroid* asteroid = new Asteroid();
+	// Set Pos/Size
+	// Return 
+}
+
+void GameController::spawnAsteroids()
+{
+	// Check Number of Asteroids
+	if (m_Asteroids.empty() == true)
+	{
+		for (int i = 0; i < iAsteroidNumber; ++i)
+		{
+			Asteroid* asteroid = createAsteroid(0, 0, 10);
+			m_Asteroids.push_back(asteroid);
+		}
+	}
+}
+
 
 void GameController::update(float deltaTime)
 {
@@ -62,6 +84,9 @@ void GameController::update(float deltaTime)
 	m_timer += deltaTime;
 
 	m_ship->update(deltaTime);
+
+	// Asteroids
+	spawnAsteroids();
 
 	//// INPUT for Ship movement
 	//aie::Input* input = aie::Input::getInstance();

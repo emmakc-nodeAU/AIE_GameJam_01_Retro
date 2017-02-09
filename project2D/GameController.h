@@ -3,6 +3,7 @@
 #include <glm/ext.hpp>
 #include <glm/glm.hpp>
 #include "Renderer2D.h"
+#include <list>
 //#include "BaseObject.h"
 //#include "Score.h"
 //#include "Canvas.h"
@@ -14,6 +15,7 @@
 //}
 class Ship;
 class Bullet;
+class Asteroid;
 
 class GameController : public aie::Application
 {
@@ -23,7 +25,7 @@ public:
 
 	// VARIABLES
 
-	int iAsteroidNumber = 0;
+	int iAsteroidNumber = 10;
 
 	// FUNCTIONS
 	// Texture
@@ -45,6 +47,18 @@ public:
 	Shutdown will be used similiar but this will replace the deconstructor.
 	*/
 
+	// Asteroid
+
+	// Create an asteroid
+	//m_Asteroid = new Asteroid();
+
+	////<type> <name> = <initial value>
+	
+
+	Asteroid* createAsteroid(float X, float Y, float size);
+
+	// Asteroid spawning
+	void spawnAsteroids();
 
 protected:
 
@@ -60,4 +74,6 @@ protected:
 	Ship* m_ship;
 	// Bullet
 	Bullet* m_bullet;
+	// Asteroid 
+	std::list<Asteroid*> m_Asteroids;
 };

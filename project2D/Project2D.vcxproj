@@ -99,6 +99,7 @@
   <ItemGroup>
     <ClInclude Include="..\bootstrap\Bullet.h" />
     <ClInclude Include="Application2D.h" />
+    <ClInclude Include="Asteroid.h" />
     <ClInclude Include="BaseObject.h" />
     <ClInclude Include="GameController.h" />
     <ClInclude Include="Ship.h" />
