@@ -20,10 +20,10 @@ void Ship::update(float deltaTime)
 
 	//glm::vec3 rotationPos;
 
-	if (input->wasKeyPressed(aie::INPUT_KEY_SPACE))
-	{
-		// Shoot
-	}
+	//if (input->wasKeyPressed(aie::INPUT_KEY_SPACE))
+	//{
+	//	// Shoot
+	//}
 
 	// ROTATION
 	if (input->isKeyDown(aie::INPUT_KEY_A))

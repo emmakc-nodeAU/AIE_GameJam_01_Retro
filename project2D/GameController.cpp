@@ -76,7 +76,7 @@ Bullet * GameController::createBullet(float x, float y, float size)
 	Bullet* bullet = new Bullet();
 	// Bullet's position points to Ship	
 	bullet->setPosition(x, y);
-	bulletList.push_back(bullet);
+	//bulletList.push_back(bullet);
 	// Size
 
 	return bullet;
@@ -134,6 +134,7 @@ void GameController::update(float deltaTime)
 		Ass->update(deltaTime);
 	}
 
+	
 
 	//for (int i = 0; i < iAsteroidNumber; ++i)
 	//{
@@ -142,19 +143,47 @@ void GameController::update(float deltaTime)
 	//	bulletList.push_back(Ass);
 	//	Ass->update(deltaTime);
 	//}
+	std::list <Bullet*> BulletToRemove;
 
 	for (auto it = bulletList.begin(); it != bulletList.end(); ++it)
 	{
 		Bullet* bullet = *it;
 
-		if (bullet->getX() < 0)					bulletList.remove(bullet);
-		if (bullet->getX() > getWindowWidth())	bulletList.remove(bullet);
-		if (bullet->getY() > 0)					bulletList.remove(bullet);
-		if (bullet->getY() < getWindowHeight())	bulletList.remove(bullet);
+		if (bullet->getX() < 0)
+		{
+			BulletToRemove.push_back(bullet);
+			continue;
+		}
+
+		if (bullet->getX() > getWindowWidth())
+		{	
+			BulletToRemove.push_back(bullet); 
+			continue; 
+		}
+
+		if (bullet->getY() < 0)
+		{
+			BulletToRemove.push_back(bullet);
+			continue;
+		}
+
+		if (bullet->getY() > getWindowHeight())
+		{
+			BulletToRemove.push_back(bullet);
+			continue;
+		}
 
 		bullet->update(deltaTime);
 	}
 	
+	for (auto it = BulletToRemove.begin(); it != BulletToRemove.end(); ++it)
+	{
+		Bullet* bullet = *it;
+
+		bulletList.remove(bullet);
+		delete bullet;
+	}
+
 	//Shoots the bullet
 	if (input->wasKeyPressed(aie::INPUT_KEY_SPACE))
 	{
@@ -249,5 +278,13 @@ void GameController::draw()
 		m_2dRender->drawSprite(m_textureAsteroids, asteroid->getX(), asteroid->getY(), asteroid->getSize(), asteroid->getSize());
 
 	}
+
+	for (auto it = bulletList.begin(); it != bulletList.end(); ++it)
+	{
+		Bullet* bullet = *it;
+		m_2dRender->drawSprite(m_textureBullet, bullet->getX(), bullet->getY(), bullet->getSize(), bullet->getSize());
+
+	}
+
 	m_2dRender->end();
 }
