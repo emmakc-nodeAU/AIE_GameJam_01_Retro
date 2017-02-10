@@ -20,7 +20,5 @@ public:
 
 	float fSpeed;
 
-	Ship* m_ship;
-
 
 };
