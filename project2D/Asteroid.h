@@ -9,13 +9,17 @@ public:
 	Asteroid();
 	~Asteroid();
 
+	// VARIABLES
+	float fSpeed;
+
+
 	// FUNCTIONS 
-	// 1. Check Asteroid Size 
+	// 1. Check Asteroid List Size 
 	float getSize()
 	{
 		return m_asteroidSize;
 	}
-	// 2. Set Asteroid Size
+	// 2. Set/ReSet Asteroid List Size
 	void setSize(int Size)
 	{
 		m_asteroidSize = Size;
@@ -24,9 +28,6 @@ public:
 	// 3. Update
 	void update(float deltaTime) override;
 
-	// VARIABLES
-	// Asteroid speed
-	float fSpeed;
 
 private:
 	
