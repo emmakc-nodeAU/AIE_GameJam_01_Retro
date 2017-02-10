@@ -5,6 +5,7 @@
 #include "Ship.h"
 #include "Bullet.h"
 #include "Asteroid.h"
+#include <iostream>
 
 
 // Foward Declaring
@@ -126,14 +127,14 @@ void GameController::CollisionDection(float x, float y)
 
 		// Detect collision between ship and asteroid bounds
 
-		glm::vec2 asteroidPos = glm::vec2(asteroid->getX(), asteroid->getY());
+		//glm::vec2 asteroidPos = glm::vec2(asteroid->getX(), asteroid->getY());
 		if (glm::length(asteroidPos-shipPos) < asteroid->getSize())
 		{
 			// For every asteroid, iterate through tehm, get postioin, and get vector.
 			// check length of each vector line is smaller than size of that asteroiid.
 			// if true collide.
 
-			// 
+			std::cout << "SHIP KILLED, GAME OVER" << std::endl;
 		}
 	}
 }
@@ -152,6 +153,8 @@ void GameController::update(float deltaTime)
 
 	// Asteroids - 
 	spawnAsteroids();
+
+	CollisionDection(0,0);
 
 	for (auto it = m_Asteroids.begin(); it != m_Asteroids.end(); ++it)
 	{
