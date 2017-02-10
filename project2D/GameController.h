@@ -67,11 +67,12 @@ public:
 
 protected:
 
-	aie::Renderer2D*	m_2dRender;      // Renders the gameObject.
-	aie::Texture*		m_textureShip;   // Gets the allocated texture.
-	aie::Texture*		m_textureBullet; // Gets the allocated texture.
-	aie::Font*			m_font;          // Loads the font.
-	aie::Audio*			m_audio;         // Imports Audio.
+	aie::Renderer2D*	m_2dRender;			// Renders the gameObject.
+	aie::Texture*		m_textureShip;		// Gets the allocated texture.
+	aie::Texture*		m_textureBullet;	// Gets the allocated texture.
+	aie::Texture*		m_textureAsteroids;	// Gets the allocated texture.
+	aie::Font*			m_font;				// Loads the font.
+	aie::Audio*			m_audio;			// Imports Audio.
 
 	float m_timer;
 

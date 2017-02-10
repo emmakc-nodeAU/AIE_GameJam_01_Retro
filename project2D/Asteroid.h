@@ -17,8 +17,9 @@ public:
 	// 1. Check Asteroid List Size 
 	float getSize()
 	{
-		return m_asteroidSize; //Error loss of data.
+		return m_asteroidSize; 
 	}
+
 	// 2. Set/ReSet Asteroid List Size
 	void setSize(int Size)
 	{

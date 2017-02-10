@@ -36,6 +36,8 @@ bool GameController::startup()
 	m_textureShip =	new aie::Texture("./textures/ship_01.png");
 	// Texture: Bullet
 	m_textureBullet = new aie::Texture("./textures/bullet.png");
+	// Texture: Asteroid
+	m_textureBullet = new aie::Texture("./textures/Asteroids.png");
 
 	//m_font =		new aie::Font("./font/consolas.ttf", 32);
 
@@ -60,8 +62,13 @@ Asteroid * GameController::createAsteroid(float X, float Y, float size)
 {
 	// Create A.
 	Asteroid* asteroid = new Asteroid();
-	// Set Pos/Size
-
+	// Assign value of X,Y positions
+	X = 0;
+	Y = 0;
+	// Set Initial Position of Asteroid
+	asteroid->setPosition(X, Y);
+	// Set Size of Asteroid
+	asteroid->setSize(10);
 	// Return 
 	return 0;
 }
@@ -105,7 +112,7 @@ void GameController::update(float deltaTime)
 
 	m_ship->update(deltaTime);
 
-	// Asteroids
+	// Asteroids - 
 	spawnAsteroids();
 	
 	for (auto it = bulletList.begin(); it != bulletList.end(); ++it)
@@ -204,6 +211,7 @@ void GameController::draw()
 
 	m_2dRender->begin();
 	m_2dRender->drawSprite(m_textureShip,m_ship->getX(),m_ship->getY(),64.0f,64.0f, m_ship->getRotation());
+	//m_2dRender->drawSprite(m_textureAsteroids, m_Asteroids->getX(), m_Asteroids->getY(), 64.0f, 64.0f, m_Asteroids->getRotation());
 	m_2dRender->drawSprite(m_textureBullet, m_bullet->getX(), m_bullet->getY(), 64.0f, 64.0f, 0);
 	m_2dRender->end();
 }
