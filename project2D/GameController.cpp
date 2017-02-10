@@ -63,6 +63,7 @@ Asteroid * GameController::createAsteroid(float X, float Y, float size)
 	// Set Pos/Size
 
 	// Return 
+	return 0;
 }
 
 Bullet * GameController::createBullet(float x, float y, float size)
@@ -70,6 +71,7 @@ Bullet * GameController::createBullet(float x, float y, float size)
 	Bullet* bullet = new Bullet();
 	//pos
 	//size
+	return 0;
 }
 
 void GameController::spawnAsteroids()
@@ -110,10 +112,10 @@ void GameController::update(float deltaTime)
 	{
 		Bullet* bullet = *it;
 
-		if (bullet->getX() < 0)					bulletList.erase;
-		if (bullet->getX() > getWindowWidth())	bulletList.erase;
-		if (bullet->getY() > 0)					bulletList.erase;
-		if (bullet->getY() < getWindowHeight())	bulletList.erase;
+		if (bullet->getX() < 0)					bulletList.remove(bullet);
+		if (bullet->getX() > getWindowWidth())	bulletList.remove(bullet);
+		if (bullet->getY() > 0)					bulletList.remove(bullet);
+		if (bullet->getY() < getWindowHeight())	bulletList.remove(bullet);
 
 		bullet->update(deltaTime);
 	}

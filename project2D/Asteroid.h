@@ -13,7 +13,7 @@ public:
 	// 1. Check Asteroid Size 
 	float getSize()
 	{
-		return m_asteroidSize;
+		return m_asteroidSize; //Error loss of data.
 	}
 	// 2. Set Asteroid Size
 	void setSize(int Size)
