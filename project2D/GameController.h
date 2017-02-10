@@ -57,8 +57,13 @@ public:
 
 	Asteroid* createAsteroid(float X, float Y, float size);
 
+	Bullet* createBullet(float x, float y, float size);
+
 	// Asteroid spawning
 	void spawnAsteroids();
+
+	// Bullet spawning
+	void spawnBullets();
 
 protected:
 
@@ -76,4 +81,7 @@ protected:
 	Bullet* m_bullet;
 	// Asteroid 
 	std::list<Asteroid*> m_Asteroids;
+	// Bullet list.
+	std::list <Bullet*> bulletList; 
+
 };

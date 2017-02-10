@@ -23,9 +23,4 @@ public:
 	Ship* m_ship;
 
 
-	Bullet* CreateBullet(float xPos, float yPos, float rotation);
-
-
-	std::list <Bullet*> bulletList; // Bullet array.
-
 };

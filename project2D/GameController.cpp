@@ -64,6 +64,13 @@ Asteroid * GameController::createAsteroid(float X, float Y, float size)
 	// Return 
 }
 
+Bullet * GameController::createBullet(float x, float y, float size)
+{
+	Bullet* bullet = new Bullet();
+	//pos
+	//size
+}
+
 void GameController::spawnAsteroids()
 {
 	// Check Number of Asteroids
@@ -77,9 +84,19 @@ void GameController::spawnAsteroids()
 	}
 }
 
+void GameController::spawnBullets()
+{
+	// Tells the console to spawn the bullet at the ship.
+	Bullet* bullet = createBullet(m_ship->getX(), m_ship->getY(), m_ship->getRotation());
+	bulletList.push_back(bullet);
+}
+
+
 
 void GameController::update(float deltaTime)
 {
+	aie::Input* input = aie::Input::getInstance();
+
 	//// Game Time
 	m_timer += deltaTime;
 
@@ -87,6 +104,25 @@ void GameController::update(float deltaTime)
 
 	// Asteroids
 	spawnAsteroids();
+	
+	for (auto it = bulletList.begin(); it != bulletList.end(); ++it)
+	{
+		Bullet* bullet = *it;
+
+		if (bullet->getX() < 0)					bulletList.erase;
+		if (bullet->getX() > getWindowWidth())	bulletList.erase;
+		if (bullet->getY() > 0)					bulletList.erase;
+		if (bullet->getY() < getWindowHeight())	bulletList.erase;
+
+		bullet->update(deltaTime);
+	}
+	
+	//Shoots the bullet
+	if (input->wasKeyPressed(aie::INPUT_KEY_SPACE))
+	{
+		spawnBullets();
+	}
+
 
 	//// INPUT for Ship movement
 	//aie::Input* input = aie::Input::getInstance();
@@ -107,8 +143,8 @@ void GameController::update(float deltaTime)
 	//}
 
 	// SPAWN GENERATOR: Asteroids
-	for (int i = 0; i < iAsteroidNumber; ++i)
-	{
+	//for (int i = 0; i < iAsteroidNumber; ++i)
+	//{
 
 
 		// ASTEROID: Collision detection
@@ -152,7 +188,7 @@ void GameController::update(float deltaTime)
 		}
 		*/
 
-	}
+	//}
 
 
 
