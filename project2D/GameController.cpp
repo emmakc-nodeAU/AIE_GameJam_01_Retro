@@ -93,9 +93,9 @@ void GameController::spawnAsteroids()
 			float yPos = rand() % getWindowHeight();//Some Random Position
 			float size = 50 + (rand() % 50);//Some Random Size
 		
-
 			Asteroid* asteroid = createAsteroid(xPos, yPos, size);
 			m_Asteroids.push_back(asteroid);
+
 		}
 	}
 }
@@ -120,7 +120,29 @@ void GameController::update(float deltaTime)
 
 	// Asteroids - 
 	spawnAsteroids();
-	
+
+	for (auto it = m_Asteroids.begin(); it != m_Asteroids.end(); ++it)
+	{
+		Asteroid* Ass = *it;
+		//Ass->setPosition(rand() % getWindowWidth(), rand() % getWindowHeight());
+
+		if (Ass->getX() + Ass->getSize() < 0)					Ass->setPosition(getWindowWidth(), Ass->getY());
+		if (Ass->getX() - Ass->getSize() > getWindowWidth())		Ass->setPosition(0, Ass->getY());
+		if (Ass->getY() + Ass->getSize() < 0)					Ass->setPosition(Ass->getX(), getWindowHeight());
+		if (Ass->getY() - Ass->getSize() > getWindowHeight())	Ass->setPosition(Ass->getX(), 0);
+
+		Ass->update(deltaTime);
+	}
+
+
+	//for (int i = 0; i < iAsteroidNumber; ++i)
+	//{
+	//	
+	//	Ass->setPosition(rand() % getWindowWidth(), rand() % getWindowHeight());
+	//	bulletList.push_back(Ass);
+	//	Ass->update(deltaTime);
+	//}
+
 	for (auto it = bulletList.begin(); it != bulletList.end(); ++it)
 	{
 		Bullet* bullet = *it;
@@ -138,6 +160,7 @@ void GameController::update(float deltaTime)
 	{
 		spawnBullets();
 	}
+
 
 
 	//// INPUT for Ship movement
