@@ -108,11 +108,36 @@ void GameController::spawnBullets()
 	bulletList.push_back(bullet);
 }
 
-void GameController::setBulletDirection()
+void GameController::CollisionDection(float x, float y)
 {
-	// Position Bullet in same direction as Ship
+	glm::vec3 distanceVector(20, 0, 0);
+	float length = glm::length(distanceVector);
 
+	for (auto it = m_Asteroids.begin(); it != m_Asteroids.end(); ++it)
+	{
+		// temp varioable in list
+		Asteroid* asteroid = *it;
+
+		// Create vector to hold position of asteroid
+		glm::vec2 asteroidPos = glm::vec2(asteroid->getX(), asteroid->getY());
+
+		// Create vector to hold position of ship
+		glm::vec2 shipPos = glm::vec2(m_ship->getX(), m_ship->getY());
+
+		// Detect collision between ship and asteroid bounds
+
+		glm::vec2 asteroidPos = glm::vec2(asteroid->getX(), asteroid->getY());
+		if (glm::length(asteroidPos-shipPos) < asteroid->getSize())
+		{
+			// For every asteroid, iterate through tehm, get postioin, and get vector.
+			// check length of each vector line is smaller than size of that asteroiid.
+			// if true collide.
+
+			// 
+		}
+	}
 }
+
 
 
 
@@ -140,6 +165,7 @@ void GameController::update(float deltaTime)
 
 		Ass->update(deltaTime);
 	}
+
 
 	
 
@@ -182,7 +208,8 @@ void GameController::update(float deltaTime)
 
 		bullet->update(deltaTime);
 	}
-	
+
+
 	for (auto it = BulletToRemove.begin(); it != BulletToRemove.end(); ++it)
 	{
 		Bullet* bullet = *it;
@@ -229,7 +256,7 @@ void GameController::update(float deltaTime)
 		int m_ship;		   // temp until class is made.
 
 
-		glm::vec3 distanceVector(20,0,0)
+		glm::vec3 distanceVector(20,0,0);
 		float length = glm::length(distanceVector);
 
 		for ((m_asteroid[i]->Position() - m_ship->Position()).length < 20)

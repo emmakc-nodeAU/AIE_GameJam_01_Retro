@@ -59,14 +59,14 @@ public:
 
 	Bullet* createBullet(float x, float y, float size);
 
+	void GameController::CollisionDection(float x, float y);
+
 	// Asteroid spawning
 	void spawnAsteroids();
 
 	// Bullet spawning
 	void spawnBullets();
 
-	// Bullet direction
-	void setBulletDirection();
 
 protected:
 
