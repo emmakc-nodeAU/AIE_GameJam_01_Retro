@@ -65,6 +65,9 @@ public:
 	// Bullet spawning
 	void spawnBullets();
 
+	// Bullet direction
+	void setBulletDirection();
+
 protected:
 
 	aie::Renderer2D*	m_2dRender;			// Renders the gameObject.

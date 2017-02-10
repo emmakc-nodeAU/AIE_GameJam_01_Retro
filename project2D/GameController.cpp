@@ -102,9 +102,16 @@ void GameController::spawnAsteroids()
 
 void GameController::spawnBullets()
 {
-	// Tells the console to spawn the bullet at the ship.
-	Bullet* bullet = createBullet(m_ship->getX(), m_ship->getY(), m_ship->getRotation());
+	// Spawn bullet at the ship's location
+	Bullet* bullet = createBullet(m_ship->getX(), m_ship->getY(), 0);
+	bullet->setRotation(m_ship->getRotation());
 	bulletList.push_back(bullet);
+}
+
+void GameController::setBulletDirection()
+{
+	// Position Bullet in same direction as Ship
+
 }
 
 
@@ -127,7 +134,7 @@ void GameController::update(float deltaTime)
 		//Ass->setPosition(rand() % getWindowWidth(), rand() % getWindowHeight());
 
 		if (Ass->getX() + Ass->getSize() < 0)					Ass->setPosition(getWindowWidth(), Ass->getY());
-		if (Ass->getX() - Ass->getSize() > getWindowWidth())		Ass->setPosition(0, Ass->getY());
+		if (Ass->getX() - Ass->getSize() > getWindowWidth())	Ass->setPosition(0, Ass->getY());
 		if (Ass->getY() + Ass->getSize() < 0)					Ass->setPosition(Ass->getX(), getWindowHeight());
 		if (Ass->getY() - Ass->getSize() > getWindowHeight())	Ass->setPosition(Ass->getX(), 0);
 
@@ -188,6 +195,7 @@ void GameController::update(float deltaTime)
 	if (input->wasKeyPressed(aie::INPUT_KEY_SPACE))
 	{
 		spawnBullets();
+
 	}
 
 
