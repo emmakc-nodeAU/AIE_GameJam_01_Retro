@@ -21,8 +21,7 @@ public:
 		m_asteroidSize = Size;
 	}
 
-	// FUNCTIONS
-	// 2. Update
+	// 3. Update
 	void update(float deltaTime) override;
 
 	// VARIABLES
@@ -31,6 +30,7 @@ public:
 
 private:
 	
+	// VARIABLES
 	int m_asteroidSize;
 
 
