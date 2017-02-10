@@ -17,7 +17,7 @@ public:
 	// 1. Check Asteroid List Size 
 	float getSize()
 	{
-		return m_asteroidSize; 
+		return m_asteroidSize; // possible loss of data!?
 	}
 
 	// 2. Set/ReSet Asteroid List Size
@@ -33,7 +33,7 @@ public:
 private:
 	
 	// VARIABLES
-	int m_asteroidSize;
+	float m_asteroidSize;
 
 
 	////std::list<Asteroids*> m_gameObjects;

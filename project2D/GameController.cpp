@@ -37,7 +37,7 @@ bool GameController::startup()
 	// Texture: Bullet
 	m_textureBullet = new aie::Texture("./textures/bullet.png");
 	// Texture: Asteroid
-	m_textureBullet = new aie::Texture("./textures/Asteroids.png");
+	m_textureAsteroids = new aie::Texture("./textures/Asteroids.png");
 
 	//m_font =		new aie::Font("./font/consolas.ttf", 32);
 
@@ -62,23 +62,24 @@ Asteroid * GameController::createAsteroid(float X, float Y, float size)
 {
 	// Create A.
 	Asteroid* asteroid = new Asteroid();
-	// Assign value of X,Y positions
-	X = 0;
-	Y = 0;
-	// Set Initial Position of Asteroid
+	
 	asteroid->setPosition(X, Y);
 	// Set Size of Asteroid
-	asteroid->setSize(10);
+	asteroid->setSize(size);
 	// Return 
-	return 0;
+	return asteroid;
 }
 
 Bullet * GameController::createBullet(float x, float y, float size)
 {
+	// Create B.
 	Bullet* bullet = new Bullet();
-	//pos
-	//size
-	return 0;
+	// Bullet's position points to Ship	
+	bullet->setPosition(x, y);
+	bulletList.push_back(bullet);
+	// Size
+
+	return bullet;
 }
 
 void GameController::spawnAsteroids()
@@ -88,7 +89,12 @@ void GameController::spawnAsteroids()
 	{
 		for (int i = 0; i < iAsteroidNumber; ++i)
 		{
-			Asteroid* asteroid = createAsteroid(0, 0, 10);
+			float xPos = rand() % getWindowWidth();//Some Random Position
+			float yPos = rand() % getWindowHeight();//Some Random Position
+			float size = 50 + (rand() % 50);//Some Random Size
+		
+
+			Asteroid* asteroid = createAsteroid(xPos, yPos, size);
 			m_Asteroids.push_back(asteroid);
 		}
 	}
@@ -212,6 +218,13 @@ void GameController::draw()
 	m_2dRender->begin();
 	m_2dRender->drawSprite(m_textureShip,m_ship->getX(),m_ship->getY(),64.0f,64.0f, m_ship->getRotation());
 	//m_2dRender->drawSprite(m_textureAsteroids, m_Asteroids->getX(), m_Asteroids->getY(), 64.0f, 64.0f, m_Asteroids->getRotation());
-	m_2dRender->drawSprite(m_textureBullet, m_bullet->getX(), m_bullet->getY(), 64.0f, 64.0f, 0);
+	//m_2dRender->drawSprite(m_textureBullet, m_bullet->getX(), m_bullet->getY(), 64.0f, 64.0f, 0);
+	
+	for (auto it = m_Asteroids.begin(); it != m_Asteroids.end(); ++it)
+	{
+		Asteroid* asteroid = *it;
+		m_2dRender->drawSprite(m_textureAsteroids, asteroid->getX(), asteroid->getY(), asteroid->getSize(), asteroid->getSize());
+
+	}
 	m_2dRender->end();
 }
