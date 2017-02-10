@@ -61,6 +61,7 @@ Asteroid * GameController::createAsteroid(float X, float Y, float size)
 	// Create A.
 	Asteroid* asteroid = new Asteroid();
 	// Set Pos/Size
+
 	// Return 
 }
 

@@ -51,6 +51,7 @@ private:
 	//			_bulletLists.push_back(bullet);
 	//		}
 
+	// SCREEN WRAP
 	//	for (auto it = m_bulletList.begin(); it != m_bulletList.end(); ++it)
 	//	{
 	//		Bullet* bullet = *it;
